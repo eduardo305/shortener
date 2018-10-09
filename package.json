@@ -11,11 +11,15 @@
     "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
   },
   "jest": {
-    "testPathIgnorePatterns": ["/node_modules/"],
+    "testPathIgnorePatterns": [
+      "/node_modules/"
+    ],
     "testRegex": "./server/tests/.*.js$"
   },
   "dependencies": {
-    "express": "4.16.3"
+    "express": "4.16.3",
+    "is-url": "^1.2.4",
+    "mongoose": "^5.3.2"
   },
   "devDependencies": {
     "concurrently": "4.0.1",

@@ -1,6 +1,12 @@
 const express = require('express');
 const path = require('path');
+const mongoose = require('mongoose');
 const config = require('./config')
+
+mongoose.connect(config.mongo.uri, { ...config.mongo.settings }, (err, db) => {
+  if (err) console.log(err);
+  console.log('Successfully connected to MongoDB');
+});
 
 const app = express();
 const port = process.env.PORT || config.port;
