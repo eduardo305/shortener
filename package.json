@@ -4,7 +4,7 @@
     "client": "cd client && yarn start",
     "server": "cd server && nodemon server.js",
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
-    "dev:server": "cd client && yarn build && cd .. && cd server && yarn start",
+    "config": "yarn && cd client && yarn",
     "start": "cd server && node server.js",
     "test:client": "cd client && yarn test",
     "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
