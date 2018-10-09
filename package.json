@@ -2,17 +2,18 @@
   "license": "MIT",
   "scripts": {
     "client": "cd client && yarn start",
-    "server": "nodemon server.js",
+    "server": "cd server && nodemon server.js",
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
-    "dev:server": "cd client && yarn build && cd .. && yarn start",
-    "start": "node server.js",
+    "dev:server": "cd client && yarn build && cd .. && cd server && yarn start",
+    "start": "cd server && node server.js",
+    "test:client": "cd client && yarn test",
     "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
   },
   "dependencies": {
-    "express": "^4.16.3"
+    "express": "4.16.3"
   },
   "devDependencies": {
-    "concurrently": "^4.0.1",
-    "nodemon": "^1.18.4"
+    "concurrently": "4.0.1",
+    "nodemon": "1.18.4"
   }
 }
