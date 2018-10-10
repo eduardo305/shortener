@@ -2,3 +2,9 @@
 
 # dependencies
 /node_modules
+
+# Jest snapshots
+**/*.js.snap
+
+# VSCode
+.vscode

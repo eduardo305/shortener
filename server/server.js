@@ -1,15 +1,21 @@
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
-const config = require('./config')
+const config = require('./config/config')
+const ShortenerRouting = require('./src/routes/ShortenerRouting')
 
+mongoose.Promise = global.Promise;
 mongoose.connect(config.mongo.uri, { ...config.mongo.settings }, (err, db) => {
   if (err) console.log(err);
   console.log('Successfully connected to MongoDB');
 });
 
+require('./src/models/Shortener');
+
 const app = express();
 const port = process.env.PORT || config.port;
+
+ShortenerRouting(app)
 
 // API calls
 app.get('/api/hello', (req, res) => {
