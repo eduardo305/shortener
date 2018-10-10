@@ -29,7 +29,7 @@ module.exports = app => {
 
     const shortUrl = shortid.generate();
 
-    if (isUrl.isUrl(originalUrl)) {
+    if (isUrl(originalUrl)) {
       try {
         const savedUrl = await Shortener.findOne({ originalUrl })
   
