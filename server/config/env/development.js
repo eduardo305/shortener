@@ -6,5 +6,8 @@ module.exports = {
     settings: {
       useNewUrlParser: true
     }
+  },
+  request: {
+    timeout: 5000
   }
 }

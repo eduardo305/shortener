@@ -14,19 +14,32 @@ const testEndpointSnapshot = (requestOptions, options = {}) => {
   }
 }
 
-const testGetEndpoint = (endpoint, options = {}) => {
+const testEndPoint = (endpoint, config, body = {}) => {
   return (
     testEndpointSnapshot({
-      method: 'GET',
-      uri: `${api}${endpoint}`
-    }, options )
+      method: config.method,
+      uri: `${api}${endpoint}`,
+      json: config.json,
+      body
+    })
   )
 }
 
-describe('/api/v1/shortener', () => {
-  it('should list all urls', testGetEndpoint('/api/v1/shortener'))
+describe('GET /api/v1/shortener', () => {
+  it('should list all urls', testEndPoint('/api/v1/shortener',
+    { method: 'GET', json: true }
+  ))
 })
 
-describe('/api/v1/shortener:id', () => {
-  it('should list one unique url', testGetEndpoint('/api/v1/shortener/5bbd4982fb6fc05175c5a812'))
+describe('GET /api/v1/shortener:id', () => {
+  it('should list one unique url', testEndPoint('/api/v1/shortener/5bbd4982fb6fc05175c5a812',
+    { method: 'GET', json: true }
+  ))
+})
+
+describe('POST /api/v1/shortener', () => {
+  it('should save a new short url', testEndPoint('/api/v1/shortener/', 
+    { method: 'GET', json: true },
+    { originalUrl: 'https://www.apple.com/shop/buy-mac/macbook-pro/15-inch' }
+  ))
 })
