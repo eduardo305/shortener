@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './Input.scss';
+
 const CustomInputComponent = ({
   field, // { name, value, onChange, onBlur }
   form: { touched, errors }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
@@ -14,7 +16,7 @@ const CustomInputComponent = ({
         : 'field-container'
     }
   >
-    <p>{props.label}</p>
+    { props.label && <p>{props.label}</p> }
     <input
       type={props.type || 'text'}
       className={`field ${props.className || ''}`}

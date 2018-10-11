@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const cors = require('cors')
 const config = require('./config/config')
 const ShortenerRouting = require('./src/routes/ShortenerRouting')
 
@@ -17,6 +18,7 @@ const app = express();
 const port = process.env.PORT || config.port;
 
 app.use(bodyParser.json());
+app.use(cors())
 
 ShortenerRouting(app)
 
