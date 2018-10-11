@@ -3,18 +3,11 @@ import { Formik, Field } from 'formik'
 import * as yup from 'yup'
 
 import Input from '../Input/Input.jsx'
-import axios from 'axios'
+import generateShortUrl from '../../actions/generateShortUrl'
+import Messages from '../../util/Messages'
 
 class ShortenerForm extends Component {
 
-  onSubmitSuccess = (message, submitCallbackObject) => {
-    submitCallbackObject.setSubmitting(false)
-    submitCallbackObject.resetForm()
-  }
-
-  onSubmitError = submitCallbackObject => {
-    submitCallbackObject.setSubmitting(false)
-  }
 
   render() {
     return (
@@ -26,34 +19,41 @@ class ShortenerForm extends Component {
           {
             url: yup
               .string()
-              .url('Please provide a valid URL. Tip: Check to see if you informed the http protocol')
-              .required('A valid URL is required'),
+              .url(Messages.invalidUrl)
+              .required(Messages.emptyUrl),
           }
         )}
-        onSubmit={(values, { setSubmitting, resetForm }) => {
+        onSubmit={ async (values, { setSubmitting, resetForm }) => {
           setSubmitting(true)
+          
+          const result = await generateShortUrl(values.url)
 
-          console.log(axios.get('http://localhost:5000/api/v1/shortener'))
+          if (result) {
+            this.props.handleResult(result.data)
+            resetForm()
+          }
 
-          console.log('values: ', values)
+          setSubmitting(false)
         }}
       >
-        {props => {
-          const {
-            handleSubmit
-          } = props
-          return (
-            <div className="shortener-form">
-              <form onSubmit={handleSubmit}>
-                <Field
-                  name="url"
-                  component={Input}
-                  placeholder="Url"
-                />
-              </form>
-            </div>
-          )
-        }}
+        {
+          props => {
+            const {
+              handleSubmit
+            } = props
+            return (
+              <div className="shortener-form">
+                <form onSubmit={handleSubmit}>
+                  <Field
+                    name="url"
+                    component={Input}
+                    placeholder="Url"
+                  />
+                </form>
+              </div>
+            )
+          }
+        }
       </Formik>
     )
   }
