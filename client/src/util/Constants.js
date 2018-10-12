@@ -1,5 +1,6 @@
 export const endpoints = {
-  generateUrlService: '/api/v1/shortener'
+  generateUrlService: '/api/v1/shortener',
+  getOriginalUrlService: '/api/v1/shortener/original'
 }
 
 export const serverURI = 'http://localhost:5000'

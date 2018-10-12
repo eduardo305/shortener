@@ -7,8 +7,6 @@ import generateShortUrl from '../../actions/generateShortUrl'
 import Messages from '../../util/Messages'
 
 class ShortenerForm extends Component {
-
-
   render() {
     return (
       <Formik

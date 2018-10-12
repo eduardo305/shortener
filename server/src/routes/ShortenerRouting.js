@@ -51,4 +51,20 @@ module.exports = app => {
       return response.status(401).json({ success: false, message: Messages.invalidUrl })
     }
   })
+
+  app.get('/api/v1/shortener/original/:id', async (request, response) => {
+    const urlId = request.params.id;
+
+    try {
+      const savedShortUrl = await Shortener.findOne({ shortUrl: urlId })
+
+      if (savedShortUrl) {
+        response.status(200).json({ success: true, data: savedShortUrl })
+      } else {
+        response.status(401).json({ success: false, message: Messages.urlNotFound })
+      }
+    } catch(error) {
+      response.status(500).json({ success: false,  message: Messages.defaultError })
+    }
+  })
 };

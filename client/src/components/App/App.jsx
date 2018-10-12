@@ -1,32 +1,25 @@
 import React, { Component } from 'react'
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
+import Main from '../../pages/Main'
+import NotFound from '../../pages/NotFound'
+import UrlRedirect from '../../pages/UrlRedirect'
+
 import './App.scss'
 
-import ShortenerForm from '../ShortenerForm/ShortenerForm'
-import Result from '../Result/Result'
-
 class App extends Component {
-  state = {
-    shortUrl: '',
-    originalUrl: ''
-  }
-
-  handleResult = (result) => {
-    if (result) {
-      this.setState({
-        shortUrl: result.shortUrl,
-        originalUrl: result.originalUrl
-      })
-    }
-  }
-
   render() {
-    const { shortUrl, originalUrl } = this.state
-    
     return (
-      <div className="App">
-        <ShortenerForm handleResult={ this.handleResult } />
-        { this.state.shortUrl && <Result shortUrl={ shortUrl } originalUrl={ originalUrl } /> }
-      </div>
+      <Router>
+        <div className="App">
+          <Switch>
+            <Route exact path="/" component={Main} />
+            <Route exact path="/not-found" component={NotFound} />
+            <Route exact path="/:id" component={UrlRedirect} />
+            <Route component={NotFound} />
+          </Switch>
+        </div>
+      </Router>
     )
   }
 }
