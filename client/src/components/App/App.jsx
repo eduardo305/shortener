@@ -8,7 +8,7 @@ import UrlRedirect from '../../pages/UrlRedirect'
 
 import './App.scss'
 
-class App extends Component {
+export class App extends Component {
   render() {
     return (
       <Router>

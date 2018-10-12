@@ -1,12 +1,18 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { Formik, Field } from 'formik'
 import * as yup from 'yup'
 
 import Input from '../Input/Input.jsx'
 import generateShortUrl from '../../actions/generateShortUrl'
+import { resetError } from '../../actions/errorActions'
 import Messages from '../../util/Messages'
 
-class ShortenerForm extends Component {
+export class ShortenerForm extends Component {
+  resetError = () => {
+    this.props.resetError()
+  }
+
   render() {
     return (
       <Formik
@@ -21,14 +27,10 @@ class ShortenerForm extends Component {
               .required(Messages.emptyUrl),
           }
         )}
-        onSubmit={ async (values, { setSubmitting, resetForm }) => {
+        onSubmit={(values, { setSubmitting }) => {
           setSubmitting(true)
           
-          const result = await generateShortUrl(values.url)
-
-          if (result) {
-            this.props.handleResult(result.data)
-          }
+          this.props.generateShortUrl(values.url)
 
           setSubmitting(false)
         }}
@@ -36,8 +38,9 @@ class ShortenerForm extends Component {
         {
           props => {
             const {
-              handleSubmit
+              handleSubmit,
             } = props
+            
             return (
               <div className="shortener-form">
                 <form onSubmit={handleSubmit}>
@@ -45,8 +48,12 @@ class ShortenerForm extends Component {
                     name="url"
                     component={Input}
                     placeholder="What url you want to get shortened?"
+                    onKeyDown={ this.resetError }
                   />
                 </form>
+
+                { this.props.error.error && <div>{ this.props.error.error }</div>}
+
               </div>
             )
           }
@@ -56,4 +63,13 @@ class ShortenerForm extends Component {
   }
 }
 
-export default ShortenerForm
+const mapStateToProps = (state) => {
+  return {
+    error: state.error
+  }
+}
+
+export default connect(mapStateToProps, { 
+  generateShortUrl,
+  resetError
+})(ShortenerForm)

@@ -9,6 +9,7 @@ const getServiceResponse = (
   ServiceName,
   RequestPayload,
   AdditionalHeaders = {},
+  callback
 ) => {
   let method = 'get'
   if (RequestPayload) {
@@ -26,10 +27,10 @@ const getServiceResponse = (
   })
 
   return axios({ url: ServiceURL, ...requestAttributes })
-    .then(response => response.data)
+    .then(response => callback(response.data))
     .catch(error => {
-      error.message = `${ServiceName} - ${error.message}`
-      throw error
+      error.message = `${ServiceName} - ${error.response.data.message}`
+      callback(null, error)
     })
 }
 

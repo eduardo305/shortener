@@ -1,6 +1,8 @@
 import React from 'react'
 import fullURL from '../../util/fullUrl'
 
+import './Result.scss'
+
 const Result = ({ originalUrl, shortUrl }) => {
   return (
     <div className="result-container">

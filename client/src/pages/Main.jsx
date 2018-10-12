@@ -1,33 +1,29 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
 import ShortenerForm from '../components/ShortenerForm/ShortenerForm'
 import Result from '../components/Result/Result'
 
 class Main extends Component {
-  state = {
-    shortUrl: '',
-    originalUrl: ''
-  }
-
-  handleResult = (result) => {
-    if (result) {
-      this.setState({
-        shortUrl: result.shortUrl,
-        originalUrl: result.originalUrl
-      })
-    }
-  }
-
   render() {
-    const { shortUrl, originalUrl } = this.state
+    const { shortUrl, originalUrl } = this.props
 
     return (
       <div className="main-container">
-        <ShortenerForm handleResult={ this.handleResult } />
-        { this.state.shortUrl && <Result shortUrl={ shortUrl } originalUrl={ originalUrl } /> }
+        <ShortenerForm />
+        { shortUrl && <Result shortUrl={ shortUrl } originalUrl={ originalUrl } /> }
       </div>
     )
   }
 }
 
-export default Main
+const mapStateToProps = (state) => {
+  const { shortenedUrl: { shortUrl, originalUrl } } = state
+
+  return {
+    shortUrl,
+    originalUrl
+  }
+}
+
+export default connect(mapStateToProps)(Main)

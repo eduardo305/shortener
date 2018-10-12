@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import ShortenerForm from './ShortenerForm';
+import { ShortenerForm } from './ShortenerForm';
 
 describe('<ShortenerForm />', () => {
   let wrapper, props;
