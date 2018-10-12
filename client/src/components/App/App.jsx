@@ -1,6 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
+import Header from '../Header/Header'
 import Main from '../../pages/Main'
 import NotFound from '../../pages/NotFound'
 import UrlRedirect from '../../pages/UrlRedirect'
@@ -12,12 +13,15 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <Switch>
-            <Route exact path="/" component={Main} />
-            <Route exact path="/not-found" component={NotFound} />
-            <Route exact path="/:id" component={UrlRedirect} />
-            <Route component={NotFound} />
-          </Switch>
+          <Fragment>
+            <Header />
+            <Switch>
+              <Route exact path="/" component={Main} />
+              <Route exact path="/not-found" component={NotFound} />
+              <Route exact path="/:id" component={UrlRedirect} />
+              <Route component={NotFound} />
+            </Switch>
+          </Fragment>
         </div>
       </Router>
     )

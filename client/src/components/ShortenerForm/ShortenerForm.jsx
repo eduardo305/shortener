@@ -28,7 +28,6 @@ class ShortenerForm extends Component {
 
           if (result) {
             this.props.handleResult(result.data)
-            resetForm()
           }
 
           setSubmitting(false)
@@ -45,7 +44,7 @@ class ShortenerForm extends Component {
                   <Field
                     name="url"
                     component={Input}
-                    placeholder="Url"
+                    placeholder="What url you want to get shortened?"
                   />
                 </form>
               </div>
