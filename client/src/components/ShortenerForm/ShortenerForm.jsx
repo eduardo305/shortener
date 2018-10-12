@@ -5,6 +5,7 @@ import * as yup from 'yup'
 
 import Input from '../Input/Input.jsx'
 import generateShortUrl from '../../actions/generateShortUrl'
+import resetResults from '../../actions/resetResults'
 import { resetError } from '../../actions/errorActions'
 import Messages from '../../util/Messages'
 
@@ -28,6 +29,7 @@ export class ShortenerForm extends Component {
         onSubmit={(values, { setSubmitting }) => {
           setSubmitting(true)
           
+          this.props.resetResults()
           this.props.generateShortUrl(values.url)
 
           setSubmitting(false)
@@ -69,5 +71,6 @@ const mapStateToProps = (state) => {
 
 export default connect(mapStateToProps, { 
   generateShortUrl,
-  resetError
+  resetError,
+  resetResults
 })(ShortenerForm)
