@@ -4,7 +4,7 @@
     "client": "cd client && yarn start",
     "server": "cd server && nodemon server.js",
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
-    "config": "yarn && cd client && yarn",
+    "setup": "yarn && cd client && yarn",
     "start": "cd server && node server.js",
     "test:client": "cd client && yarn test",
     "test:server": "jest",
