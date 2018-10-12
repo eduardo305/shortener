@@ -3,7 +3,6 @@ const { Schema } = mongoose;
 
 const ShortenerSchema = new Schema({
   originalUrl: String,
-  urlCode: String,
   shortUrl: String
 });
 
