@@ -9,9 +9,7 @@ import { resetError } from '../../actions/errorActions'
 import Messages from '../../util/Messages'
 
 export class ShortenerForm extends Component {
-  resetError = () => {
-    this.props.resetError()
-  }
+  resetError = () => this.props.resetError()
 
   render() {
     return (

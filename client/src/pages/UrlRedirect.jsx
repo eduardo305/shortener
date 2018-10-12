@@ -1,22 +1,45 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import Spinner from '../components/Spinner/Spinner'
+
 import getOriginalUrl from '../actions/getOriginalUrl'
 
 class UrlRedirect extends Component {
-  componentDidMount = async () => {
-    const urlId = this.props.match.params.id
+  componentDidMount = () => {
+    this.props.getOriginalUrl(this.props.match.params.id)
+  }
+  
+  componentDidUpdate() {
+    const { originalUrl } = this.props
 
-    const result = await getOriginalUrl(urlId)
-
-    if (result) {
-      window.location.href = result.data.originalUrl
+    if (originalUrl) {
+      window.location.href = originalUrl
     }
   }
 
   render() {
-    return (
-      <div>UrlRedirect</div>
-    )
+    const { error } = this.props
+    
+    // TODO: Wrap this component in a HOC
+    if (error.error) {
+      return <div>{ error.error }</div>
+    }
+
+    return <Spinner type="balls" />
   }
 }
 
-export default UrlRedirect
+const mapStateToProps = (state) => {
+  const {
+    shortenedUrl: { shortUrl, originalUrl },
+    error
+  } = state
+
+  return {
+    shortUrl,
+    originalUrl,
+    error
+  }
+}
+
+export default connect(mapStateToProps, { getOriginalUrl })(UrlRedirect)

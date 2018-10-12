@@ -22,7 +22,7 @@ describe('<Result />', () => {
 
   test('renders properly', () => {
     expect(wrapper.find('.result-container').length).toBe(1);
-    expect(wrapper.find('.original-url').text()).toBe('original')
-    expect(wrapper.find('.short-url').text()).toBe(`${clientURI}/short`)
+    expect(wrapper.find('.original-url').text()).toBe('Original URL: original')
+    expect(wrapper.find('.short-url').text()).toBe(`Short URL: ${clientURI}/short`)
   });
 });

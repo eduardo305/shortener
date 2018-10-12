@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import Header from '../Header/Header'
 import Main from '../../pages/Main'
 import NotFound from '../../pages/NotFound'
 import UrlRedirect from '../../pages/UrlRedirect'
@@ -14,7 +13,6 @@ export class App extends Component {
       <Router>
         <div className="App">
           <Fragment>
-            <Header />
             <Switch>
               <Route exact path="/" component={Main} />
               <Route exact path="/not-found" component={NotFound} />

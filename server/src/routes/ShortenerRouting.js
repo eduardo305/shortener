@@ -38,7 +38,7 @@ module.exports = app => {
       if (savedShortUrl) {
         return response.status(200).json({ success: true, data: savedShortUrl })
       } else {
-        return response.status(401).json({ success: false, message: Messages.alreadyShortened })
+        return response.status(401).json({ success: false, message: Messages.urlNotFound })
       }
     }
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
+import Header from '../components/Header/Header'
 import ShortenerForm from '../components/ShortenerForm/ShortenerForm'
 import Result from '../components/Result/Result'
 
@@ -10,6 +11,7 @@ class Main extends Component {
 
     return (
       <div className="main-container">
+        <Header />
         <ShortenerForm />
         { shortUrl && <Result shortUrl={ shortUrl } originalUrl={ originalUrl } /> }
       </div>

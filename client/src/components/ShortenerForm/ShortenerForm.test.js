@@ -6,7 +6,12 @@ describe('<ShortenerForm />', () => {
   let wrapper, props;
 
   beforeEach(() => {
-    wrapper = mount(<ShortenerForm />);
+    props = {
+      error: {
+        error: ''
+      }
+    }
+    wrapper = mount(<ShortenerForm { ...props } />);
   });
 
   afterEach(() => {
