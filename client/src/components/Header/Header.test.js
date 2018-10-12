@@ -16,6 +16,6 @@ describe('<Header />', () => {
 
   test('renders properly', () => {
     expect(wrapper.find('.header-container').length).toBe(1);
-    expect(wrapper.find('.header-container').text()).toBe('Want your url shortned? Sure!!! Why not???')
+    expect(wrapper.find('.header-container').text()).toBe('Want your url shortned? Sure!!!')
   });
 });
