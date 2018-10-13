@@ -1,0 +1,9 @@
+@import '../../variables.scss';
+
+.redirect-url-error {
+  text-align: center;
+
+  .error-container {
+    margin: $medium;
+  }
+}

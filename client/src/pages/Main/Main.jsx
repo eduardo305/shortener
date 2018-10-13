@@ -6,6 +6,8 @@ import Header from '../../components/Header/Header'
 import ShortenerForm from '../../components/ShortenerForm/ShortenerForm'
 import Result from '../../components/Result/Result'
 
+import { resetError } from '../../actions/errorActions'
+
 import './Main.scss'
 
 class Main extends Component {
@@ -14,7 +16,7 @@ class Main extends Component {
   }
 
   componentDidMount() {
-    this.setState({ show: true })
+    this.setState({ show: true }, () => this.props.resetError())
   }
 
   render() {
@@ -55,4 +57,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(Main)
+export default connect(mapStateToProps, { resetError })(Main)

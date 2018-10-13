@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Link  } from 'react-router-dom'
 
-import getOriginalUrl from '../actions/getOriginalUrl'
+import getOriginalUrl from '../../actions/getOriginalUrl'
+
+import './UrlRedirect.scss'
 
 class UrlRedirect extends Component {
   componentDidMount = () => {
@@ -21,7 +24,15 @@ class UrlRedirect extends Component {
     
     // TODO: Wrap this component in a HOC
     if (error.error) {
-      return <div>{ error.error }</div>
+      return (
+        <div className="redirect-url-error">
+          <div className="error-container">
+            { error.error }
+          </div>
+
+          <Link to="/">Back to Home</Link>
+        </div>
+      )
     }
 
     return <h1>Redirecting...</h1>

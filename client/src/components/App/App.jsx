@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import Main from '../../pages/Main/Main'
 import NotFound from '../../pages/NotFound'
-import UrlRedirect from '../../pages/UrlRedirect'
+import UrlRedirect from '../../pages/UrlRedirect/UrlRedirect'
 
 import './App.scss'
 
