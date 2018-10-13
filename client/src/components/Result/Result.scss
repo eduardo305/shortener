@@ -1,5 +1,22 @@
+@import '../../variables.scss';
+
 .result-container {
   padding: 20px;
-  background-color: white;
+  background-color: $base-grey;
   border-radius: 7px;
+  color: $light-grey;
+
+  .url {
+    margin: $medium;
+
+    strong {
+      color: $white;
+    }
+
+    &.short-url {
+      a {
+        color: $light-grey;
+      }
+    }
+  }
 }

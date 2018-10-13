@@ -8,10 +8,10 @@ const Result = ({ originalUrl, shortUrl }) => {
 
   return (
     <div className="result-container">
-      <div className="original-url">
+      <div className="url original-url">
         <strong>Original URL:</strong> { originalUrl }
       </div>
-      <div className="short-url">
+      <div className="url short-url">
         <strong>Short URL: </strong><a href={ urlShortened } target="_blank">{ urlShortened }</a>
       </div>
     </div>

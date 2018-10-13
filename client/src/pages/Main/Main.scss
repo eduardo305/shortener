@@ -16,3 +16,23 @@
   transform: scale(0.9);
   transition: all 300ms ease-out;
 }
+
+
+.drop-enter {
+  opacity: 0.01;
+  transform: scale(0.2);
+}
+.drop-enter-active {
+  opacity: 1;
+  transform: scale(1);
+  transition: all 300ms ease-out;
+}
+.drop-exit {
+  opacity: 1;
+  transform: scale(1)
+}
+.drop-exit-active {
+  opacity: 0.01;
+  transform: scale(0.9);
+  transition: all 300ms ease-out;
+}

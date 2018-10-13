@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import { CSSTransition } from 'react-transition-group'
 
@@ -9,22 +9,39 @@ import Result from '../../components/Result/Result'
 import './Main.scss'
 
 class Main extends Component {
+  state = {
+    show: false
+  }
+
+  componentDidMount() {
+    this.setState({ show: true })
+  }
+
   render() {
     const { shortUrl, originalUrl } = this.props
 
     return (
-      <div className="main-container">
-        <Header />
-        <ShortenerForm />
-        <CSSTransition
-          in={ shortUrl.length > 0 }
+      <CSSTransition
+          in={this.state.show}
           timeout={300}
-          classNames="result"
+          classNames="drop"
           unmountOnExit
         >
-          { <Result shortUrl={ shortUrl } originalUrl={ originalUrl } /> }
-        </CSSTransition>
-      </div>
+        <div className="main-container">
+          
+          <Header />
+          <ShortenerForm />
+
+          <CSSTransition
+            in={ shortUrl.length > 0 }
+            timeout={300}
+            classNames="result"
+            unmountOnExit
+          >
+            { <Result shortUrl={ shortUrl } originalUrl={ originalUrl } /> }
+          </CSSTransition>
+        </div>
+      </CSSTransition>
     )
   }
 }

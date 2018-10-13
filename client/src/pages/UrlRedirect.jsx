@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import Spinner from '../components/Spinner/Spinner'
 
 import getOriginalUrl from '../actions/getOriginalUrl'
 
@@ -25,7 +24,7 @@ class UrlRedirect extends Component {
       return <div>{ error.error }</div>
     }
 
-    return <Spinner type="balls" />
+    return <h1>Redirecting...</h1>
   }
 }
 
