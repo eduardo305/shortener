@@ -11,7 +11,7 @@ describe('GET /api/v1/shortener', () => {
       .get(endpoint)
       .set('Accept', 'application/json')
       .expect('Content-Type', /json/)
-      .expect(200);
+      .expect(200)
   })
 
   it('should list all urls', async () => {
@@ -30,7 +30,7 @@ describe('GET /api/v1/shortener/original:id', () => {
       .get(`${endpoint}/original/cmwU5ijF2`)
       .set('Accept', 'application/json')
       .expect('Content-Type', /json/)
-      .expect(200);
+      .expect(200)
   })
 
   it('should return an error if no url is found', () => {
@@ -38,7 +38,7 @@ describe('GET /api/v1/shortener/original:id', () => {
       .get(`${endpoint}/original/noMatch`)
       .set('Accept', 'application/json')
       .expect('Content-Type', /json/)
-      .expect(401);
+      .expect(401)
   })
 
   it('should list one unique url object', async () => {
@@ -62,7 +62,7 @@ describe('POST /api/v1/shortener', () => {
       .send({ originalUrl: 'http://www.apple.com' })
       .set('Accept', 'application/json')
       .expect('Content-Type', /json/)
-      .expect(200);
+      .expect(200)
   })
 
   it('should not shorten urls already shortened', async () => {
@@ -84,6 +84,6 @@ describe('POST /api/v1/shortener', () => {
       .send({ originalUrl: 'http://127.0.0.1:3000/not-found' })
       .set('Accept', 'application/json')
       .expect('Content-Type', /json/)
-      .expect(401);
+      .expect(401)
   })
 })

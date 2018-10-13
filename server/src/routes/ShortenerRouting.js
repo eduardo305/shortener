@@ -6,11 +6,7 @@ const shortid = require('shortid')
 const isUrl = require('is-url')
 
 const Messages = require('../../config/messages/messages')
-
-const isShortened = (url) => {
-  // A stronger check would be advise
-  return url.indexOf('http://127.0.0.1:3000') != -1 && shortid.isValid(url.substr(22))
-}
+const isShortened = require('../util/isShortened')
 
 module.exports = app => {
   app.get('/api/v1/shortener', async (request, response) => {
