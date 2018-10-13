@@ -26,7 +26,7 @@ A step by step series of examples that tell you how to get a development env run
 First, setup the code in your local by running bellow command:
 
 ```
-yarn run setup
+yarn setup
 ```
 
 Then, run below command to get started:
