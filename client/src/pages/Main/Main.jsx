@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { CSSTransition } from 'react-transition-group'
 
@@ -25,7 +25,7 @@ class Main extends Component {
     return (
       <CSSTransition
           in={this.state.show}
-          timeout={300}
+          timeout={600}
           classNames="drop"
           unmountOnExit
         >

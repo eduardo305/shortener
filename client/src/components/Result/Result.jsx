@@ -12,7 +12,14 @@ const Result = ({ originalUrl, shortUrl }) => {
         <strong>Original URL:</strong> { originalUrl }
       </div>
       <div className="url short-url">
-        <strong>Short URL: </strong><a href={ urlShortened } target="_blank">{ urlShortened }</a>
+        <strong>Short URL: </strong>
+        <a
+          href={ urlShortened }
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          { urlShortened }
+        </a>
       </div>
     </div>
   )

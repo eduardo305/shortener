@@ -47,7 +47,7 @@ export class ShortenerForm extends Component {
                   <Field
                     name="url"
                     component={Input}
-                    placeholder="What url you want to get shortened?"
+                    placeholder="What long URL is bothering you?"
                     onKeyDown={ this.resetError }
                   />
                 </form>

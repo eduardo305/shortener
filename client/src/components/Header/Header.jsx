@@ -5,7 +5,7 @@ import './Header.scss'
 const Header = () => {
   return (
     <div className="header-container">
-      <h1>Want your url shortned? Sure!!!</h1>
+      <h1>Want your url shortened? Sure!!!</h1>
     </div>
   )
 }
