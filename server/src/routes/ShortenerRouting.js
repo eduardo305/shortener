@@ -1,6 +1,6 @@
 require('../models/Shortener')
 
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 const Shortener = mongoose.model('Shortener')
 const shortid = require('shortid')
 const isUrl = require('is-url')
@@ -14,23 +14,17 @@ const isShortened = (url) => {
 
 module.exports = app => {
   app.get('/api/v1/shortener', async (request, response) => {
-    const urls = await Shortener.find({})
-
-    response.send(urls);
-  });
-
-  app.get('/api/v1/shortener/:id', async (request, response) => {
     try {
-      const url = await Shortener.find({ _id: request.params.id })
-      response.send({ success: true , data: url })
+      const urls = await Shortener.find({})
 
+      response.send(urls)
     } catch(error) {
       response.status(500).json({ success: false,  message: Messages.defaultError })
     }
   })
 
   app.post('/api/v1/shortener', async (request, response) => {
-    const { originalUrl } = request.body;
+    const { originalUrl } = request.body
 
     if (isShortened(originalUrl)) {
       const savedShortUrl = await Shortener.findOne({ shortUrl: originalUrl.substr(22) })
@@ -42,7 +36,7 @@ module.exports = app => {
       }
     }
 
-    const shortUrl = shortid.generate();
+    const shortUrl = shortid.generate()
 
     if (isUrl(originalUrl)) {
       try {
@@ -68,7 +62,7 @@ module.exports = app => {
   })
 
   app.get('/api/v1/shortener/original/:id', async (request, response) => {
-    const urlId = request.params.id;
+    const urlId = request.params.id
 
     try {
       const savedShortUrl = await Shortener.findOne({ shortUrl: urlId })
@@ -82,4 +76,4 @@ module.exports = app => {
       response.status(500).json({ success: false,  message: Messages.defaultError })
     }
   })
-};
+}

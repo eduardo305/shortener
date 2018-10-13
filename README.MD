@@ -42,9 +42,18 @@ You are now able to open up your browser and navigate to **http://127.0.0.1:3000
 For running tests, all you need to do is to execute a one of the following commands:
 
   - server tests:
+  Note: Please remember you need to have the server running first so you can run its tests. Bellow command will run the server:
+  
+  ```
+    yarn server
+  ```
+
+  and bellow command will run its tests
+
   ```
     yarn test:server
   ```
+
 
   - client tests:
   ```

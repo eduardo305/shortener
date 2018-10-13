@@ -1,1 +1,1 @@
-module.exports = require('./env/' + (process.env.ENV || 'development'));
+module.exports = require('./env/' + (process.env.ENV || 'development'))
