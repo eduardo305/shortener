@@ -49,6 +49,7 @@ export class ShortenerForm extends Component {
                     component={Input}
                     placeholder="What long URL is bothering you?"
                     onKeyDown={ this.resetError }
+                    autoFocus
                   />
                 </form>
 
