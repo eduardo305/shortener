@@ -7,6 +7,7 @@ const isUrl = require('is-url')
 
 const Messages = require('../../config/messages/messages')
 const isShortened = require('../util/isShortened')
+const slugGenerator = require('../util/slugGenerator')
 
 module.exports = app => {
   app.get('/api/v1/shortener', async (request, response) => {
@@ -32,7 +33,7 @@ module.exports = app => {
       }
     }
 
-    const shortUrl = shortid.generate()
+    const shortUrl = await slugGenerator.generate()
 
     if (isUrl(originalUrl)) {
       try {
