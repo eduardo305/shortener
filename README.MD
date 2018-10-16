@@ -62,6 +62,11 @@ For running tests, all you need to do is to execute a one of the following comma
 
 Remember to always execute these scripts from the root
 
+## Notes:
+
+I decided to use a third-party slug generator to take care of our shortUrl process. The package is called short-id and it creates the unique slugs based on [a-zA-Z0-9] char set. The decision was made basing on the reuse principle. However, I have implemented an idea of how the generation process could be if I have decided not to use third-party libs. You can take a look at the branch "ownSlugGenerator" and check the file slugGenerator.js. There's a self explanatory comment explaining the decisions made in there. Of course, the app would need a few tweaks such as in the method that checks if an url is already shortened, but that could be made in another point. Should you have any questions, please let me know.
+
+
 ## Authors
 
 * **Eduardo Silva** - *Initial work* - [Github](https://github.com/eduardo305)
